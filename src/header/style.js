@@ -103,6 +103,17 @@ export const Addition = styled.div`
     height: 56px;
 `
 
+export const SearchInfo = styled.div`
+    position: absolute;
+    left: 0;
+    top: 56px;
+    padding: 0 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    width: 240px;
+    height: 100px;
+    background-color: green;
+`
+
 export const Button = styled.div`
     padding: 0 20px;
     line-height: 38px;

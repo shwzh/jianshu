@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 import {
     HeaderWrapper,
     Nav, Logo, NavItem, NavSearch,
-    Addition,Button,SearchWrapper
+    Addition,Button,SearchWrapper,SearchInfo
 } from "./style";
 
 import { actionCreators } from './store'
@@ -33,6 +33,7 @@ class Header extends Component {
                       </CSSTransition>
 
                       <span className={ this.props.focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
+                      <SearchInfo></SearchInfo>
                   </SearchWrapper>
 
               </Nav>
@@ -49,7 +50,7 @@ class Header extends Component {
 
 }
 const mapState = (state) => ({
-    focused: state.header.focused
+    focused: state.getIn(['header', 'focused'])
 })
 const mapAction = (dispatch) => {
     return {
