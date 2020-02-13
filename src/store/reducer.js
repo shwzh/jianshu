@@ -1,9 +1,8 @@
+import { combineReducers } from 'redux'
+import { reducer as headerReducer } from '../header/store'
 
+const reducer = combineReducers({
+    header: headerReducer
+})
 
-const defaultState = {
-
-}
-
-export default (state = defaultState, action) => {
-    return state
-}
+export default reducer;

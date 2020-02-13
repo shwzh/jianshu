@@ -6,17 +6,10 @@ import {
     Nav, Logo, NavItem, NavSearch,
     Addition,Button,SearchWrapper
 } from "./style";
-import { HANDLE_INPUT_BLUR, HANDLE_INPUT_FOCUSED} from "./store/actionType";
+
+import { actionCreators } from './store'
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            focused: false,
-        };
-        this.handleInputFocused = this.handleInputFocused.bind(this);
-        this.handleInputBlur = this.handleInputBlur.bind(this);
-    }
     render() {
       return (
           <HeaderWrapper>
@@ -28,18 +21,18 @@ class Header extends Component {
                   <NavItem className='right '>Aa</NavItem>
                   <SearchWrapper>
                       <CSSTransition
-                          in={this.state.focused}
+                          in={this.props.focused}
                           timeout={200}
                           classNames='slide'
                       >
                           <NavSearch
-                              className={ this.state.focused ? 'focused' : ''}
-                              onFocus={this.handleInputFocused}
-                              onBlur={this.handleInputBlur}
+                              className={ this.props.focused ? 'focused' : ''}
+                              onFocus={this.props.handleInputFocused}
+                              onBlur={this.props.handleInputBlur}
                           ></NavSearch>
                       </CSSTransition>
 
-                      <span className={ this.state.focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
+                      <span className={ this.props.focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
                   </SearchWrapper>
 
               </Nav>
@@ -56,17 +49,19 @@ class Header extends Component {
 
 }
 const mapState = (state) => ({
-    focused: state.focused
+    focused: state.header.focused
 })
 const mapAction = (dispatch) => {
     return {
         handleInputBlur() {
-            dispatch()
+            dispatch(actionCreators.inputBlurAction())
+
+            console.log('失去焦点')
         },
         handleInputFocused() {
-            this.setState({
-                focused: true
-            })
+            console.log('聚焦')
+            dispatch(actionCreators.inputFocusedAction())
+
         }
     }
 }

@@ -1,10 +1,10 @@
-import { HANDLE_INPUT_BLUR, HANDLE_INPUT_FOCUSED } from "./actionType";
+import * as actionType from "./actionType";
 
 export const inputFocusedAction = () => ({
-    type: HANDLE_INPUT_FOCUSED
+    type: actionType.HANDLE_INPUT_FOCUSED
 })
 
 
 export const inputBlurAction = () => ({
-    type: HANDLE_INPUT_BLUR
+    type: actionType.HANDLE_INPUT_BLUR
 })
