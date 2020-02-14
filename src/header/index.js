@@ -4,14 +4,41 @@ import { CSSTransition } from "react-transition-group";
 import {
     HeaderWrapper,
     Nav, Logo, NavItem, NavSearch,
-    Addition,Button,SearchWrapper,SearchInfo
+    Addition,Button,
+    SearchWrapper,SearchInfo,SearchInfoTitle,
+    SearchInfoSwitch, SearchInfoItem, SearchList
 } from "./style";
 
 import { actionCreators } from './store'
 
+
+
 class Header extends Component {
+    getListItem(){
+        const { focused, list } = this.props;
+        if(focused) {
+            return (
+                <SearchInfo>
+                    <SearchInfoTitle>
+                        热门搜多
+                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchList>
+                        {
+                            list.map((item) => {
+                                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                            })
+                        }
+                    </SearchList>
+                </SearchInfo>
+            )
+        } else {
+            return null
+        }
+    }
     render() {
-      return (
+        const { focused, list, handleInputFocused, handleInputBlur } = this.props;
+        return (
           <HeaderWrapper>
               <Logo />
               <Nav>
@@ -33,7 +60,7 @@ class Header extends Component {
                       </CSSTransition>
 
                       <span className={ this.props.focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
-                      <SearchInfo></SearchInfo>
+                      { this.getListItem()}
                   </SearchWrapper>
 
               </Nav>
@@ -46,11 +73,12 @@ class Header extends Component {
               </Addition>
           </HeaderWrapper>
       )
-    }
+    };
 
 }
 const mapState = (state) => ({
-    focused: state.getIn(['header', 'focused'])
+    focused: state.getIn(['header', 'focused']),
+    list: state.getIn(['header', 'list'])
 })
 const mapAction = (dispatch) => {
     return {
@@ -61,7 +89,9 @@ const mapAction = (dispatch) => {
         },
         handleInputFocused() {
             console.log('聚焦')
+            dispatch(actionCreators.getListData()); // 这里为什么用dispatch 自己找了好久的坑
             dispatch(actionCreators.inputFocusedAction())
+
 
         }
     }

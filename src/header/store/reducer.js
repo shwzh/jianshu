@@ -2,7 +2,8 @@ import * as actionType from "./actionType";
 import { fromJS} from "immutable"; // 可以查阅immutable的官网
 
 const defaultState = fromJS({
-    focused: false
+    focused: false,
+    list: [],
 })
 
 export default (state = defaultState, action) => {
@@ -12,6 +13,9 @@ export default (state = defaultState, action) => {
     }
     if(action.type === actionType.HANDLE_INPUT_FOCUSED) {
         return state.set('focused', true)
+    }
+    if(action.type === actionType.HANDLE_GET_LIST) {
+        return state.set('list', action.data)
     }
     return state
 }
