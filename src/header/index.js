@@ -37,7 +37,7 @@ class Header extends Component {
         }
     }
     render() {
-        const { focused, list, handleInputFocused, handleInputBlur } = this.props;
+        const { focused, handleInputFocused, handleInputBlur } = this.props;
         return (
           <HeaderWrapper>
               <Logo />
@@ -48,18 +48,18 @@ class Header extends Component {
                   <NavItem className='right '>Aa</NavItem>
                   <SearchWrapper>
                       <CSSTransition
-                          in={this.props.focused}
+                          in={focused}
                           timeout={200}
                           classNames='slide'
                       >
                           <NavSearch
-                              className={ this.props.focused ? 'focused' : ''}
-                              onFocus={this.props.handleInputFocused}
-                              onBlur={this.props.handleInputBlur}
+                              className={ focused ? 'focused' : ''}
+                              onFocus={handleInputFocused}
+                              onBlur={handleInputBlur}
                           ></NavSearch>
                       </CSSTransition>
 
-                      <span className={ this.props.focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
+                      <span className={ focused ? 'iconfont search focused' : 'iconfont search'}>&#xe6fe;</span>
                       { this.getListItem()}
                   </SearchWrapper>
 
