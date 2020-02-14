@@ -4,8 +4,8 @@ import { IconfontStyle } from "./static/iconfont/iconfont";
 import store from './store'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './home';
-import Detail from './detail';
+import Home from './pages/home';
+import Detail from './pages/detail';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
                 <Header />
                 <BrowserRouter>
                     <div>
-                        <Route path='/' exact render={() => <div>home</div>}></Route>
-                        <Route path='/detail' render={() => <div>detail</div>}></Route>
+                        <Route path='/' exact component={Home}></Route>
+                        <Route path='/detail' component={Detail}></Route>
                     </div>
                 </BrowserRouter>
             </div>
