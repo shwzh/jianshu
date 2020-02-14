@@ -6,4 +6,5 @@ class LoadingComponent extends Component {
     }
 }
 
+export default LoadingComponent
 
