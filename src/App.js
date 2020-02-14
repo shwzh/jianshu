@@ -4,7 +4,7 @@ import { IconfontStyle } from "./static/iconfont/iconfont";
 import store from './store'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './pages/home';
+import Home from './pages/home/loadable';
 import Detail from './pages/detail';
 
 function App() {

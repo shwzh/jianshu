@@ -45,7 +45,6 @@ export const TopicItem = styled.div`
         width: 32px;
         margin-right: 10px;
     }
-
 `
 
 export const TestBackground = styled.div`
@@ -54,5 +53,4 @@ export const TestBackground = styled.div`
     height: 50px;
     background: url(${(props) => props.imgUrl});
     background-size: contain;
-
 `

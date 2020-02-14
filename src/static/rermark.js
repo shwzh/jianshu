@@ -42,4 +42,21 @@
  */
 
 
+/**
+ * react-loadable  解决的问题是 避免首页加载其他页面中的代码
+ *
+ * yarn add react-loadable
+ *
+ * 需要新建一个loadable.js
+ *
+ *  接受参数的时候可能会出现问题，需要引入一个 withRouter
+ *
+ *  import { withRouter } from 'react-router-dom'
+ *
+ *  在抛出时用到
+ *  export default connect(mapState, mapDispatch)(withRoute(detail))
+ *
+ */
+
+
 
