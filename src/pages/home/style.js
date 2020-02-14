@@ -47,3 +47,12 @@ export const TopicItem = styled.div`
     }
 
 `
+
+export const TestBackground = styled.div`
+    margin-top: 100px;
+    width: 50px;
+    height: 50px;
+    background: url(${(props) => props.imgUrl});
+    background-size: contain;
+
+`
